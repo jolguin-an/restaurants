@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_container"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/m_toolbar"
+        layout="@layout/toolbar" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</LinearLayout>
