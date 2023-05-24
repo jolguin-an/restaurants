@@ -2,6 +2,8 @@
     <!-- App -->
     <string name="app_name">Restaurant</string>
     <string name="navigate_to_find">Find Restaurants</string>
+    <string name="navigate_to_near_places">Find Near Places</string>
+    <string name="near_places">Restaurants Near You</string>
 
     <!-- Error messages -->
     <string name="fragment_not_implemented">The activity must implement this fragment listener</string>

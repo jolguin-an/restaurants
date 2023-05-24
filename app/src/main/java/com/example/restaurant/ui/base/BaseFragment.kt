@@ -2,6 +2,8 @@ package com.example.restaurant.ui.base
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,12 +54,12 @@ abstract class BaseFragment<VB : ViewBinding>(
         return false
     }
 
-    fun showProgressBar() {
+    /**fun showProgressBar() {
         childFragmentManager.let {
             progressBar.isCancelable = false
             progressBar.show(it, "ShowProgressBar")
         }
-    }
+    }*/
 
     fun dismissProgressBar() {
         progressBar.dismiss()
@@ -95,5 +97,38 @@ abstract class BaseFragment<VB : ViewBinding>(
             getString(fragmentNotImplemented)
     }
 
+    fun bitmapDescriptorFromVector(
+    ): Bitmap {
+        val markerLayout: View =
+            layoutInflater.inflate(R.layout.store_marker_layout, null)
 
+        markerLayout.measure(
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        )
+        markerLayout.layout(0, 0, markerLayout.measuredWidth, markerLayout.measuredHeight)
+
+        val bitmap = Bitmap.createBitmap(
+            60,
+            60,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        markerLayout.draw(canvas)
+        return bitmap
+    }
+
+    fun saveFlagToSharedPreferences(value: Boolean, key: String) {
+        this.activity!!
+            .getSharedPreferences("pref", Context.MODE_PRIVATE)
+            .edit().putBoolean(key, value).apply()
+
+    }
+
+    fun getFlagFromSharedPreferences(key: String): Boolean {
+        val flag = false
+        return this.activity!!
+            .getSharedPreferences("pref", Context.MODE_PRIVATE)
+            .getBoolean(key, flag)
+    }
 }

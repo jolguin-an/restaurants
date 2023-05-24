@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -44,7 +45,6 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
@@ -67,6 +67,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.9.0"
 
     // Google Maps
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
@@ -79,4 +80,11 @@ dependencies {
 
     // Material Design autocomplete Searchbar
     implementation "com.github.mancj:MaterialSearchBar:0.8.5"
+
+    //Room
+    implementation "androidx.room:room-runtime:2.5.1"
+    implementation "androidx.room:room-rxjava2:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
+
+
 }

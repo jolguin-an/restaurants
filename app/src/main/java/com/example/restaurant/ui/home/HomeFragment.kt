@@ -6,6 +6,7 @@ import android.view.View
 import com.example.restaurant.R
 import com.example.restaurant.databinding.FragmentHomeBinding
 import com.example.restaurant.ui.base.BaseFragment
+import com.example.restaurant.utils.FLAG_KEY_SAVED_ELEMENTS
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -28,12 +29,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     }
 
-
     private fun initializeUi() {
         showToolbar()
         binding.btnNavigateToFind.setOnClickListener {
             listener?.navigateToMap()
 
+        }
+        binding.btnNavigateToNearPlaces.visibility =
+            if (getFlagFromSharedPreferences(FLAG_KEY_SAVED_ELEMENTS)) View.VISIBLE
+            else View.GONE
+
+        binding.btnNavigateToNearPlaces.setOnClickListener {
+            listener?.navigateToNearbyPlaces()
         }
     }
 
@@ -43,5 +50,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     interface Listener {
         fun navigateToMap()
+        fun navigateToNearbyPlaces()
     }
 }

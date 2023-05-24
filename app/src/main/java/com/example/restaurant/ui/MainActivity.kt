@@ -1,17 +1,16 @@
 package com.example.restaurant.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.example.restaurant.R
 import com.example.restaurant.databinding.ActivityMainBinding
 import com.example.restaurant.ui.base.BaseActivity
 import com.example.restaurant.ui.home.HomeFragment
 import com.example.restaurant.ui.maps.RestaurantMapFragment
+import com.example.restaurant.ui.places.NearbyPlacesFragment
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate),
-    HomeFragment.Listener {
+    HomeFragment.Listener, NearbyPlacesFragment.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +24,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun navigateToMap() {
         navigateTo(RestaurantMapFragment.newInstance())
+    }
+
+    override fun navigateToNearbyPlaces() {
+        navigateTo(NearbyPlacesFragment.newInstance())
     }
 }
